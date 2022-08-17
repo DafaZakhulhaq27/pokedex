@@ -1,9 +1,7 @@
+import Navigation from "./navigation";
+
 function App() {
-  return (
-    <div className="App">
-      <p>Hello World</p>
-    </div>
-  );
+  return  <Navigation /> ;
 }
 
 export default App;
