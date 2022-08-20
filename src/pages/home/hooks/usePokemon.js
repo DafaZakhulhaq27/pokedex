@@ -85,8 +85,6 @@ const usePokemon = () => {
         const typeFilter = filter.type.length ? searchFilter.filter((data) => {
             for(let i = 0; i < data.types.length ; i++){
                 for(let j = 0; j < filter.type.length ; j++){
-                    console.log(data.types[i].name,'data.types[i].name')
-                    console.log(filter.type[j].name,'data.types[i].name')
                     return data.types[i].type.name === filter.type[j].name
                 }                
             }
