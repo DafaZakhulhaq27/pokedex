@@ -1,7 +1,7 @@
 {
   "name": "pokedex",
   "version": "0.1.0",
-  "homepage": "https://DafaZakhulhaq27.github.io/pokedex",
+  "homepage": "https://dafazakhulhaq27.github.io/pokedex",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
