@@ -20,7 +20,7 @@ const UseTypes = (url) => {
             }
         })
 
-        return totalSelected < 2
+        return totalSelected < 1
     },[data])
 
     const fetchData = useCallback(async () => {

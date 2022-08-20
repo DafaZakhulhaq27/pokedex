@@ -1,11 +1,11 @@
 import React from 'react'
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { HashRouter, Route, Routes } from 'react-router-dom'
 import { DetailPage, HomePage } from '../pages'
 import { DETAIL, HOME } from './routesName'
 
 const Navigation = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route
           path={HOME}
@@ -20,7 +20,7 @@ const Navigation = () => {
           }
         />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 
