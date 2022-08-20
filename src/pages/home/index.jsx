@@ -1,9 +1,10 @@
 import React from 'react'
-import Filter from './filterTypes'
-import usePokemon from './usePokemon'
+import Filter from './view/filterTypes'
+import usePokemon from './hooks/usePokemon'
 import './home.css'
-import { Badge, Card } from 'react-bootstrap'
-import { PokemonItem } from '../../components'
+import { Error, Loading, PokemonItem, ScrollOnTop } from '../../components'
+import { Image } from 'react-bootstrap'
+import UseScroll from './hooks/useScroll'
 
 const Home = () => {
     const {
@@ -17,39 +18,45 @@ const Home = () => {
         handleType,
     } = usePokemon()
 
+    const {
+        show,
+    } = UseScroll()
+
     return (
-        <div>   
-            <Filter handleSearch={handleSearch} handleType={handleType} />    
-            <div className="d-flex flex-wrap justify-content-center">
+        <>
+            <div className="d-flex flex-column align-items-center">  
+                <Image 
+                    className="col-12 col-md-5"
+                    src="./assets/pokemon_logo.png" 
+                    fluid />
+                <Filter handleSearch={handleSearch} handleType={handleType} />    
+                <div className="d-flex flex-wrap justify-content-center">
+                {
+                    currentPokemonData.length ?
+                    currentPokemonData.map((data,index) => {
+                        if(currentPokemonData.length === index + 1){
+                            return <PokemonItem  
+                                        data={data} 
+                                        key={index} 
+                                        lastItem={lastPokemon} />  ;
+                        }else{
+                            return   <PokemonItem  
+                                        data={data} 
+                                        key={index} />  ;
+                        }
+                    }) :
+                    isFilter  ? 
+                    <p className="w-100 text-center" ref={lastPokemon}> {nextPage ? '' : 'Tidak Ada Data' } </p> : null
+                }
+                <Loading loading={loading || nextPage} /> 
+                </div> 
+                <Error error={error} />
+            </div>    
             {
-                currentPokemonData.length ?
-                currentPokemonData.map((data,index) => {
-                    if(currentPokemonData.length === index + 1){
-                        return <PokemonItem  
-                                    data={data} 
-                                    key={index} 
-                                    lastItem={lastPokemon} 
-                                    style={{ width: '18rem' }} />  ;
-                    }else{
-                        return   <PokemonItem  
-                                    data={data} 
-                                    key={index} 
-                                    style={{ width: '18rem' }} />  ;
-                    }
-                }) :
-                isFilter ? 
-                <div ref={lastPokemon}> {nextPage ? '' : 'Tidak Ada Data'} </div> : null
-            }
-            </div>   
-            {
-                loading ? 
-                <p>Loading...</p> : null
-            }
-            {
-                error ? 
-                <p>Terjadi Gangguan</p> : null
-            }
-        </div>
+                show ? 
+                <ScrollOnTop /> : null
+            }    
+        </>
     )
 }
 

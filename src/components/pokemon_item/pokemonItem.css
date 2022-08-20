@@ -1,0 +1,21 @@
+.pokemon-item{
+    border-color: #232323 !important;
+    transition: 0.5s;
+    width: 200px;
+}
+@media only screen and (max-width: 455px) {
+    .pokemon-item{
+        width: 150px;
+        
+    }
+}
+.pokemon-item:hover{
+    scale: 1.05;
+    z-index: 99;
+}
+.card-body{
+    background-color: #232323 ;
+}
+.card-title{
+    color: white;
+}

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, Col, Form, Row } from 'react-bootstrap'
-import UseTypes from './useTypes'
+import UseTypes from '../hooks/useTypes'
 
 const Filter = ({handleSearch,handleType}) => {
     const {
@@ -12,10 +12,14 @@ const Filter = ({handleSearch,handleType}) => {
     } = UseTypes('https://pokeapi.co/api/v2/type')
 
     return (
-    <Form className="my-4 justify-content-center type-container">
+    <Form className="my-4 justify-content-center type-container w-100">
         <div className="d-flex justify-content-center">
         <Form.Group className="mb-3 col-12 col-md-6">
-            <Form.Control onChange={handleSearch} type="search" name="search" placeholder="name@example.com" />
+            <Form.Control 
+                onChange={handleSearch} 
+                type="search" 
+                name="search" 
+                placeholder="Search Pokemon" />
         </Form.Group>
         </div>
         {/* {

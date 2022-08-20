@@ -1,0 +1,11 @@
+.scroll-on-top{
+    position: sticky;
+    bottom: 10px;
+    right: 0;
+    width: 200px;
+    padding: 16px;
+    border-radius: 100px;
+    text-align: center;
+    z-index: 99;
+    cursor: pointer;
+}

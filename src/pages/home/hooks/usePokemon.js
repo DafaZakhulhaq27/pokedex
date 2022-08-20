@@ -22,6 +22,7 @@ const usePokemon = () => {
             setError(false)
             try {
                 const response = await axios.get(nextPage);
+                console.log(response,'r')
                 setNextPage(response.data.next);
                 response.data.results.map(async (data) => {
                     const responseDetail = await axios.get(data.url);
@@ -91,7 +92,7 @@ const usePokemon = () => {
         }) : searchFilter ;
 
         return typeFilter ;
-    },[basePokemonData,filter])
+    },[basePokemonData,filter,nextPage])
 
     const isFilter = useMemo(() => {
         return filter.search || filter.type.length ;
