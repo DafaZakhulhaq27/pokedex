@@ -1,7 +1,12 @@
+import { Container } from "react-bootstrap";
 import Navigation from "./navigation";
 
 function App() {
-  return  <Navigation /> ;
+  return (
+    <Container>
+      <Navigation /> 
+    </Container> 
+  ) ;
 }
 
 export default App;
