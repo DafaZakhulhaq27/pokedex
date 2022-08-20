@@ -26,7 +26,7 @@ const Home = () => {
         <>
             <div className="d-flex flex-column align-items-center">  
                 <Image 
-                    className="col-12 col-md-5"
+                    className="col-7 col-md-5"
                     src="./assets/pokemon_logo.png" 
                     fluid />
                 <Filter handleSearch={handleSearch} handleType={handleType} />    
@@ -51,11 +51,12 @@ const Home = () => {
                 <Loading loading={loading || nextPage} /> 
                 </div> 
                 <Error error={error} />
+                {
+                    show ? 
+                    <ScrollOnTop /> : null
+                }    
             </div>    
-            {
-                show ? 
-                <ScrollOnTop /> : null
-            }    
+            
         </>
     )
 }

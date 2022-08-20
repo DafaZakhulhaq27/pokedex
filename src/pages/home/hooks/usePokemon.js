@@ -22,7 +22,6 @@ const usePokemon = () => {
             setError(false)
             try {
                 const response = await axios.get(nextPage);
-                console.log(response,'r')
                 setNextPage(response.data.next);
                 response.data.results.map(async (data) => {
                     const responseDetail = await axios.get(data.url);
@@ -81,14 +80,16 @@ const usePokemon = () => {
 
     const currentPokemonData = useMemo(() => {
         const searchFilter =  basePokemonData.filter((data) => {
-            return data.name.includes(filter.search);
+            return data.name.includes(filter.search.toLowerCase());
         })
         const typeFilter = filter.type.length ? searchFilter.filter((data) => {
-            data.types.map((detailTypePokemon) => {
-                filter.type.map((detailType) => {
-                    return detailTypePokemon.type.name === detailType.name
-                })
-            })
+            for(let i = 0; i < data.types.length ; i++){
+                for(let j = 0; j < filter.type.length ; j++){
+                    console.log(data.types[i].name,'data.types[i].name')
+                    console.log(filter.type[j].name,'data.types[i].name')
+                    return data.types[i].type.name === filter.type[j].name
+                }                
+            }
         }) : searchFilter ;
 
         return typeFilter ;

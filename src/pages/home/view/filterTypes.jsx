@@ -1,5 +1,6 @@
 import React from 'react'
-import { Card, Col, Form, Row } from 'react-bootstrap'
+import { Badge, Card, Col, Form, Row } from 'react-bootstrap'
+import { Loading } from '../../../components'
 import UseTypes from '../hooks/useTypes'
 
 const Filter = ({handleSearch,handleType}) => {
@@ -22,28 +23,24 @@ const Filter = ({handleSearch,handleType}) => {
                 placeholder="Search Pokemon" />
         </Form.Group>
         </div>
-        {/* {
-            loading ? 
-            <p>Loading...</p> :
-            <div className="d-flex flex-wrap">
-            {
-                data.map((data,index) => (
-                    <Card 
-                        onClick={() => {
-                            if(isAllowSelected() || data.isSelected){
-                                handleSelect(index,data.isSelected)  
-                                handleType(data,data.isSelected)  
-                            }
-                        }} 
-                        bg={data.isSelected ? 'success' : 'light'} 
-                        key={index} 
-                        className={`m-2 type-item cursor-pointer ${!isAllowSelected() && !data.isSelected ? 'opacity-50' : ''} `}>
-                        <Card.Body>{data.name}</Card.Body>
-                    </Card>
-                ))
-            }
-            </div>
-        } */}
+        <Loading loading={loading}>
+                <div className="d-flex flex-wrap justify-content-center">
+                {
+                    data.map((data,index) => (
+                        <Badge 
+                            onClick={() => {
+                                if(isAllowSelected() || data.isSelected){
+                                    handleSelect(index,data.isSelected)  
+                                    handleType(data,data.isSelected)  
+                                }
+                            }} 
+                            className={`m-1 cursor-pointer ${!isAllowSelected() && !data.isSelected ? 'opacity-50' : ''}`}
+                            key={index} 
+                            bg={data.isSelected ? 'success' : 'secondary'}>{data.name}</Badge>
+                    ))
+                }
+            </div>                
+        </Loading>
     </Form>  
     )
 }
