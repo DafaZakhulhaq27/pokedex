@@ -6,16 +6,16 @@ import './pokemonItem.css'
 
 const PokemonItem = ({data,lastItem, ...props}) => {
   return (
-    <Link to={DETAIL}>
+    <Link to={DETAIL} state={{ data: data }}>
         <Card className="m-2 pokemon-item" ref={lastItem} {...props}>
             <Card.Img variant="top" src={data.sprites.front_default} />
             <Card.Body>
             <Card.Title>{data.name}</Card.Title>
-                {
-                    data.types.map((detailType,indexType) => (
-                        <Badge className="me-2" key={indexType} bg="primary">{detailType.type.name}</Badge>
-                    ))
-                }
+            {
+                data.types.map((detailType,indexType) => (
+                    <Badge className="me-2" key={indexType} bg="primary">{detailType.type.name}</Badge>
+                ))
+            }
             </Card.Body>
         </Card>       
     </Link>
