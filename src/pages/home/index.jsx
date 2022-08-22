@@ -26,6 +26,7 @@ const Home = () => {
         <>
             <div className="d-flex flex-column align-items-center">  
                 <Image 
+                    data-testid="pokemon-banner"
                     className="col-7 col-md-5"
                     src="./assets/pokemon_logo.png" 
                     fluid />

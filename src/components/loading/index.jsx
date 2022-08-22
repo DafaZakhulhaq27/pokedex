@@ -6,7 +6,9 @@ const Loading = ({loading,children}) => {
         <div className="loading-contaienr">
             {
                 loading ? 
-                <div className="loading"></div> : children
+                <div 
+                    data-testid="loading"
+                    className="loading"></div> : children
             }        
         </div>
     )

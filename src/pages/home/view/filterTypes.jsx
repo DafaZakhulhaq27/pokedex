@@ -20,6 +20,7 @@ const Filter = ({handleSearch,handleType}) => {
                 onChange={handleSearch} 
                 type="search" 
                 name="search" 
+                data-testid="search"
                 placeholder="Search Pokemon" />
         </Form.Group>
         </div>
